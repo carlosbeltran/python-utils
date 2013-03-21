@@ -6,8 +6,6 @@ import random
 path = "."
 filescount = 10 
 
-#for root, dirs, files in os.walk(path):
-#dirs = os.listdir(path)
 dirs = filter(os.path.isdir, os.listdir(path))
 
 for dir in dirs:
