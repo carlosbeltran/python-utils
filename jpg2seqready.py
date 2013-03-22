@@ -5,10 +5,25 @@ import optparse
 import fnmatch
 import shutil
 
-path = "."
+own = ''
+
+parser = optparse.OptionParser()
+
+parser.add_option("-d", "--directory", dest="path",
+        help="directory where to search for files",metavar="PATH")
+
+(opts,args) = parser.parse_args()
+
 counter = 0
 
-files = filter(os.path.isfile, os.listdir(path))
+if (opts.path):
+   #record original dir
+   own = os.getcwd()
+   #go to the new dir
+   os.chdir(opts.path)
+   print opts.path
+
+files = filter(os.path.isfile, os.listdir("."))
 files = sorted ([f for f in files if fnmatch.fnmatch(f,'*.jpg')])
 
 for file in files:
@@ -17,9 +32,6 @@ for file in files:
     shutil.copyfile(file,newname)
     print file + " --->  " + newname
 
-#print files 
-#files = sorted(files)
-#for file in files:
-#    if fnmatch.fnmatch(file, '*.jpg'):
-#        print file
+#go back to original dir
+os.chdir(own)
 
