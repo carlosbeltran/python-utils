@@ -20,7 +20,8 @@ def getfileslist(path, extfilter):
 
 def getbbfromfile(file):
     f = open(file,'r');
-    print f.read()
+    for line in f.readlines()[1:]:
+        print line.strip().split()[:5]
 
 parser = optparse.OptionParser()
 
