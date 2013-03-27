@@ -18,22 +18,30 @@ def getfileslist(path, extfilter):
    os.chdir(own)
    return files
 
+def getbbfromfile(file):
+    f = open(file,'r');
+    print f.read()
+
 parser = optparse.OptionParser()
 
 parser.add_option("-i", "--imagesdirectory", dest="imagespath",
-        help="directory where to search for files",metavar="IMGPATH")
+        help="directory where to search for images files",metavar="IMGPATH")
+
+parser.add_option("-t", "--textsdirectory", dest="txtspath",
+        help ="directory where to search for txt files (Dollar format)", 
+        metavar="TXTPATH")
 
 (opts,args) = parser.parse_args()
 
 counter = 0
 
+txtfiles = getfileslist(opts.txtspath, "*.txt")
 imgfiles = getfileslist(opts.imagespath,"*.jpg")
 
-for file in imgfiles:
-    #newname = "I%.3d.jpg" % counter;
-    #counter += 1
-    #shutil.copyfile(file,newname)
-    print opts.imagespath + file 
+for img,txt in zip(imgfiles,txtfiles):
+    #print opts.imagespath + file 
+    print img + " --> " + txt
+    getbbfromfile(opts.txtspath+txt)
 
 #go back to original dir
 
