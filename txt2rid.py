@@ -20,8 +20,10 @@ def getfileslist(path, extfilter):
 
 def getbbfromfile(file):
     f = open(file,'r');
+    locations = []
     for line in f.readlines()[1:]:
-        print line.strip().split()[:5]
+        locations.append(line.strip().split()[:5])
+    return locations
 
 parser = optparse.OptionParser()
 
@@ -42,7 +44,9 @@ imgfiles = getfileslist(opts.imagespath,"*.jpg")
 for img,txt in zip(imgfiles,txtfiles):
     #print opts.imagespath + file 
     print img + " --> " + txt
-    getbbfromfile(opts.txtspath+txt)
+    boundingboxes = getbbfromfile(opts.txtspath+txt)
+    for bb in boundingboxes:
+        print bb
 
 #go back to original dir
 
