@@ -27,7 +27,7 @@ def getbbfromfile(file):
     f = open(file,'r');
     locations = []
     for line in f.readlines()[1:]:
-        locations.append(line.strip().split()[:5])
+        locations.append(line.strip().split()[:6])
     return locations
 
 def forceaspectratio(box, imgwidth, imghight):
@@ -94,31 +94,33 @@ if __name__ == '__main__':
         boundingboxes = getbbfromfile(opts.txtspath+txt)
         for bb in boundingboxes:
             #check dic
-            personid = bb[0]
-            if personid in people:
-                people[personid][0] += 1
-            else:
-                people[personid] = [1,idcounter]
-                idcounter += 1
+            occluded = int(bb[5])
+            if not occluded:
+               personid = bb[0]
+               if personid in people:
+                   people[personid][0] += 1
+               else:
+                   people[personid] = [1,idcounter]
+                   idcounter += 1
 
-            id = people[personid][1]
+               id = people[personid][1]
 
-            print bb
-            print "----> " + bb[1] + " " + bb[2] + " " + bb[3] + " " + bb[4]
+               print bb
+               print "----> " + bb[1] + " " + bb[2] + " " + bb[3] + " " + bb[4]
 
-            #pygame.draw.rect(theimg, pygame.Color(255,0,0), pygame.Rect(int(bb[1]),int(bb[2]),int(bb[3]),int(bb[4])),2)
-            box = (int(bb[1]),int(bb[2]), int(bb[3]), int(bb[4]))
-            cropedbox = forceaspectratio(box, 1260, 960)
-            if cropedbox:
-               print "-Ar-> " + str(cropedbox[0]) + " " + str(cropedbox[1]) \
-               + " " + str(cropedbox[2]) + " " + str(cropedbox[3])
-               newbox = (cropedbox[0],
-                       cropedbox[1], 
-                       cropedbox[0]+cropedbox[2],
-                       cropedbox[1]+cropedbox[3])
+               #pygame.draw.rect(theimg, pygame.Color(255,0,0), pygame.Rect(int(bb[1]),int(bb[2]),int(bb[3]),int(bb[4])),2)
+               box = (int(bb[1]),int(bb[2]), int(bb[3]), int(bb[4]))
+               cropedbox = forceaspectratio(box, 1260, 960)
+               if cropedbox:
+                  print "-Ar-> " + str(cropedbox[0]) + " " + str(cropedbox[1]) \
+                  + " " + str(cropedbox[2]) + " " + str(cropedbox[3])
+                  newbox = (cropedbox[0],
+                          cropedbox[1], 
+                          cropedbox[0]+cropedbox[2],
+                          cropedbox[1]+cropedbox[3])
 
-               area = pilimg.crop(newbox)
-               newimgname = "%.4d%.3d.jpg" % (id,people[personid][0])
-               area.save(opts.imagespath + "crops/"+ newimgname,'jpeg')
+                  area = pilimg.crop(newbox)
+                  newimgname = "%.4d%.3d.jpg" % (id,people[personid][0])
+                  area.save(opts.imagespath + "crops/"+ newimgname,'jpeg')
     print people
 
