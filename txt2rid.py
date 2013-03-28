@@ -5,7 +5,7 @@ import optparse
 import fnmatch
 import shutil
 import sys
-#import pygame
+import pygame
 import time
 from PIL import Image
 import re
@@ -58,6 +58,7 @@ def forceaspectratio(box, imgwidth, imghight):
 
     return (x,y,width,height)
 
+
 if __name__ == '__main__':
 
     parser = optparse.OptionParser()
@@ -71,13 +72,14 @@ if __name__ == '__main__':
     
     (opts,args) = parser.parse_args()
     
+    idcounter = 1
     people = {}
-    #pygame.init()
-    #w = 1260
-    #h = 960
-    #size = (w,h)
+    pygame.init()
+    w = 1260
+    h = 960
+    size = (w,h)
     #screen = pygame.display.set_mode(size)
-    #c = pygame.time.Clock()
+    c = pygame.time.Clock()
 
     txtfiles = getfileslist(opts.txtspath, "*.txt")
     imgfiles = getfileslist(opts.imagespath,"*.jpg")
@@ -86,18 +88,20 @@ if __name__ == '__main__':
     for img,txt in zip(imgfiles,txtfiles):
         #print opts.imagespath + file 
         imgpath = opts.imagespath+img
-        #theimg = pygame.image.load(imgpath)
+        theimg = pygame.image.load(imgpath)
         pilimg = Image.open(imgpath)
         ###print img + " --> " + txt
         boundingboxes = getbbfromfile(opts.txtspath+txt)
         for bb in boundingboxes:
             #check dic
             personid = bb[0]
-            id = int(re.search('\d\d',bb[0]).group(0))
             if personid in people:
-                people[personid] = people[personid] + 1
+                people[personid][0] += 1
             else:
-                people[personid] = 1
+                people[personid] = [1,idcounter]
+                idcounter += 1
+
+            id = people[personid][1]
 
             print bb
             print "----> " + bb[1] + " " + bb[2] + " " + bb[3] + " " + bb[4]
@@ -113,8 +117,8 @@ if __name__ == '__main__':
                        cropedbox[0]+cropedbox[2],
                        cropedbox[1]+cropedbox[3])
 
-               #area = pilimg.crop(newbox)
-               #newimgname = "%.4d%.3d.jpg" % (id,people[personid])
-               #area.save(opts.imagespath + "crops/"+ newimgname,'jpeg')
+               area = pilimg.crop(newbox)
+               newimgname = "%.4d%.3d.jpg" % (id,people[personid][0])
+               area.save(opts.imagespath + "crops/"+ newimgname,'jpeg')
     print people
 
