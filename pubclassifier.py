@@ -24,6 +24,19 @@ class MyTable(QTableWidget):
             self.setItem(i,0,newitem)
             self.setCellWidget(i,1,combo)
 
+    def table2list(self):
+        content = []
+        for row in range(self.rowCount()):
+            content.append([str(self.item(row,0).text().toUtf8()).strip(), str(self.cellWidget(row,1).currentText())])
+            #sys.stdout.write(str(row) + " " +self.cellWidget(row,1).currentText())
+            #sys.stdout.write("  ")
+        print content
+
+    #def pickledump(self):
+    #    None
+    #def pickleload(self):
+    #    None
+
 def main(args):
     f = open("final.txt",'r')
     lista = f.readlines()
@@ -39,6 +52,7 @@ def main(args):
     app = QApplication(args)
     table = MyTable(lista,topiclist,len(lista), 2)
     table.show()
+    table.table2list()
     sys.exit(app.exec_())
     
 if __name__=="__main__":
