@@ -21,6 +21,9 @@ class MyTable(QTableWidget):
     def __init__(self, *args):
         QTableWidget.__init__(self, *args)
         self.buildtablestruct()
+        self.verticalHeader().setDefaultSectionSize(100)
+        self.horizontalHeader().setDefaultSectionSize(500)
+        self.resize(1000,500*2)
 
     def buildtablestruct(self):
         for i in range(len(lista)):
