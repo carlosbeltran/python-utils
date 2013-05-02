@@ -1,5 +1,6 @@
 #! /usr/bin/python
 
+import cPickle
 import sys
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
@@ -30,10 +31,13 @@ class MyTable(QTableWidget):
             content.append([str(self.item(row,0).text().toUtf8()).strip(), str(self.cellWidget(row,1).currentText())])
             #sys.stdout.write(str(row) + " " +self.cellWidget(row,1).currentText())
             #sys.stdout.write("  ")
-        print content
+        return content
 
-    #def pickledump(self):
-    #    None
+    def pickledump(self):
+        outfile = open("data.txt","wb")
+        completelist = self.table2list()
+        cPickle.dump(completelist,outfile)
+        None
     #def pickleload(self):
     #    None
 
@@ -52,7 +56,8 @@ def main(args):
     app = QApplication(args)
     table = MyTable(lista,topiclist,len(lista), 2)
     table.show()
-    table.table2list()
+    #table.table2list()
+    table.pickledump()
     sys.exit(app.exec_())
     
 if __name__=="__main__":
