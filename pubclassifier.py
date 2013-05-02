@@ -5,8 +5,6 @@ from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
 lista = ['aa', 'ab', 'ac']
-listb = ['ba', 'bb', 'bc']
-listc = ['ca', 'cb', 'cc']
 
 topiclist = ['Social Signal Processing',
         'Video Analytics',
@@ -17,19 +15,30 @@ topiclist = ['Social Signal Processing',
         'Clustering Analysis for drug discovery',
         'Other works']
 
-mystruct = {'A':lista, 'B':listb, 'C':listc}
+
 
 class MyTable(QTableWidget):
-    def __init__(self, thestruct, *args):
+    def __init__(self, *args):
         QTableWidget.__init__(self, *args)
-        self.data = thestruct
-        self.combo = QComboBox()
+        #self.data = thestruct
+        #self.combo = QComboBox()
 
-        for topic in topiclist:
-            self.combo.addItem(topic)
+        #for topic in topiclist:
+        #    self.combo.addItem(topic)
 
-        self.setmydata()
-        
+        #self.setmydata()
+        self.buildtablestruct()
+
+    def buildtablestruct(self):
+        for i in range(len(lista)):
+            newitem = QTableWidgetItem(lista[i])
+    
+            combo = QComboBox()
+            for topic in topiclist:
+                combo.addItem(topic)
+
+            self.setItem(i,0,newitem)
+            self.setCellWidget(i,1,combo)
         
     def setmydata(self):
         n = 0
@@ -39,12 +48,12 @@ class MyTable(QTableWidget):
                 newitem = QTableWidgetItem(item)
                 self.setItem(m, n, newitem)
                 m += 1
-            self.setCellWidget(m,n,self.combo)
+            #self.setCellWidget(m,n,self.combo)
             n += 1
 
 def main(args):
     app = QApplication(args)
-    table = MyTable(mystruct, 5, 3)
+    table = MyTable(2, 3)
     table.show()
     sys.exit(app.exec_())
     
