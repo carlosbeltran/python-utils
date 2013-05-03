@@ -5,6 +5,25 @@ import sys
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
+class MainWindow(QMainWindow):
+    def __init__(self,parent=None):
+        super(MainWindow,self).__init__(parent)
+        self.statusBar().showMessage('Ready')
+        self.setGeometry(300,500,1000,500)
+        self.setWindowTitle('Statusbar')
+        f = open("final.txt",'r')
+        lista = f.readlines()
+        
+        topiclist = ['Social Signal Processing',
+                'Video Analytics',
+                'Acoustic Signal Processing',
+                'Sensor and Data Fusion, Mobile Sensing 3D Modeling and Analysis',
+                'Machine Learning Mouse Behavior Analysis In-Vitro Neuronal Network',
+                'Analysis Structural and Functional Brain Connectivity Analysis',
+                'Clustering Analysis for drug discovery',
+                'Other works']
+        self.table = MyTable(lista,topiclist,len(lista), 2)
+        self.setCentralWidget(self.table)
 
 class MyTable(QTableWidget):
     def __init__(self, list1,list2,*args):
@@ -52,20 +71,10 @@ class MyTable(QTableWidget):
         self.buildtablestruct(lista,topiclist)
 
 def main(args):
-    f = open("final.txt",'r')
-    lista = f.readlines()
-    
-    topiclist = ['Social Signal Processing',
-            'Video Analytics',
-            'Acoustic Signal Processing',
-            'Sensor and Data Fusion, Mobile Sensing 3D Modeling and Analysis',
-            'Machine Learning Mouse Behavior Analysis In-Vitro Neuronal Network',
-            'Analysis Structural and Functional Brain Connectivity Analysis',
-            'Clustering Analysis for drug discovery',
-            'Other works']
     app = QApplication(args)
-    table = MyTable(lista,topiclist,len(lista), 2)
-    table.show()
+    mainwindow = MainWindow()
+    mainwindow.show()
+    #table.show()
     #table.pickledump()
     sys.exit(app.exec_())
     
