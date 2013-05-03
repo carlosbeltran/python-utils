@@ -9,7 +9,8 @@ from PyQt4.QtGui import *
 class MyTable(QTableWidget):
     def __init__(self, list1,list2,*args):
         QTableWidget.__init__(self, *args)
-        self.buildtablestruct(list1,list2)
+        #self.buildtablestruct(list1,list2)
+        self.pickleload()
         self.verticalHeader().setDefaultSectionSize(100)
         self.horizontalHeader().setDefaultSectionSize(500)
         self.resize(1000,500*2)
@@ -37,9 +38,18 @@ class MyTable(QTableWidget):
         outfile = open("data.txt","wb")
         completelist = self.table2list()
         cPickle.dump(completelist,outfile)
-        None
-    #def pickleload(self):
-    #    None
+        outfile.close()
+
+    def pickleload(self):
+        lista = []
+        topiclist = []
+        infile = open("data.txt","rb")
+        completelist = cPickle.load(infile)
+        infile.close()
+        for item in completelist:
+            lista.append(item[0])
+            topiclist.append(item[1])
+        self.buildtablestruct(lista,topiclist)
 
 def main(args):
     f = open("final.txt",'r')
@@ -56,8 +66,7 @@ def main(args):
     app = QApplication(args)
     table = MyTable(lista,topiclist,len(lista), 2)
     table.show()
-    #table.table2list()
-    table.pickledump()
+    #table.pickledump()
     sys.exit(app.exec_())
     
 if __name__=="__main__":
