@@ -52,7 +52,7 @@ p31
 aa(lp32
 S'Sciallero C., Paradossi G., Trucco A. (2012) A Preliminary In Vitro Assessment of Polymer-Shelled Microbubbles in Contrast-Enhanced Ultrasound Imaging, Ultrasonics, vol. 52, (no. 3), pp. 456-464, Elsevier'
 p33
-aS'In-Vitro Neuronal Network Analysis'
+aS'Acoustic Signal Processing'
 p34
 aa(lp35
 S'Sedda A., Manfredi V., Bottini G., Cristani M., Murino V. (2012) Automatic human interaction understanding: lessons from a multidisciplinary approach, Frontiers in Human Neuroscience, vol. 6, 1662-5161'
@@ -272,7 +272,7 @@ p163
 aa(lp164
 S'Crocco M., Del Bue A., Barbosa I. B., Murino V. (2012) A Closed Form Solution for the Self-Calibration of Heterogeneous Sensors, 23rd British Machine Vision Conference (BMVC 2012), Guildford, UK'
 p165
-aS'Sensor and Data Fusion, Mobile Sensing'
+aS'3D Modeling and Analysis'
 p166
 aa(lp167
 S'Crocco M., Del Bue A., Bustreo M., Murino V. (2012) A Closed Form Solution to the Microphone Position Self-Calibration Problem, pp. 2597-2600, 37th International Conference on Acoustics, Speech, and Signal Processing (ICASSP 2012), Kyoto, Japan'
@@ -287,7 +287,7 @@ p172
 aa(lp173
 S'San Biagio M., Ulas A., Crocco M., Cristani M., Castellani U., Murino V. (2012) A Multiple Kernel Learning Approach to Multi-Modal Pedestrian Classification, 21st International Conference on Pattern Recognition (ICPR 2012), Tsukuba Science City, JAPAN'
 p174
-aS'Machine Learning'
+aS'Sensor and Data Fusion, Mobile Sensing'
 p175
 aa(lp176
 S'Sciallero C., Trucco A. (2012) A preliminary ultrasound assessment of multimodality contrast agents, pp. 154-157, IEEE 7th Int. Symposium on Medical Measurements and Applications (MeMeA 2012), Budapest - Hungary'
@@ -347,7 +347,7 @@ p208
 aa(lp209
 S'Bazzani L., Cristani M., Murino V. (2012) Decentralized particle filter for joint individual-group tracking, 25th IEEE Conference on Computer Vision and Pattern Recognition (CVPR 2012), Providence, RI, USA'
 p210
-aS'Social Signal Processing'
+aS'Video Analytics'
 p211
 aa(lp212
 S'Chellali R., Renna I., Bernier E. (2012) Detection et Reconnaissance des Gestes Emblematiques, pp. 220-228, Reconnaissance des Formes et Intelligence Artificielle (RFIA 2012), Lyon, France'
@@ -412,7 +412,7 @@ p247
 aa(lp248
 S'San Biagio M., Crocco M., Cristani M., Martelli S., Murino V. (2012) Low-level Multimodal Integration on Riemannian Manifolds for Automatic Pedestrian Detection, 15th International Conference on Information Fusion (FUSION 2012), Singapore'
 p249
-aS'Video Analytics'
+aS'Sensor and Data Fusion, Mobile Sensing'
 p250
 aa(lp251
 S'Sabzevari R., Del Bue A., Murino V. (2012) Multi-view Photometric Stereo using Semi-isometric Mappings, 3DimPVT 2012, Zurich, Switzerland'
@@ -607,7 +607,7 @@ p364
 aa(lp365
 S'Bazzani L., de Freitas N., Larochelle H., Murino V., Ting J-A (2011) Learning attentional policies for object tracking and recognition in video with deep networks, pp. 937-944, 28th International Conference on Machine Learning (ICML2011), Bellevue, Washington, USA'
 p366
-aS'Video Analytics'
+aS'Machine Learning'
 p367
 aa(lp368
 S"Cristani M., Pesarin A., Vinciarelli A., Crocco M., Murino V. (2011) Look at Who's Talking: Voice Activity Detection by Automated Gesture Analysis, Workshop on Interactive Human Behavior Analysis in Open or Public Spaces (InterHub 2011), Amsterdam, Holland"
@@ -887,7 +887,7 @@ p532
 aa(lp533
 S'Jojic N., Perina A., Cristani M., Murino V., Frey B. (2009) Stel component analysis: Modeling spatial correlations in image class structure, pp. 2044-2051, IEEE Conference on Computer Vision and Pattern Recognition, 2009, Miami, FL'
 p534
-aS'Social Signal Processing'
+aS'Machine Learning'
 p535
 aa(lp536
 S'Farenzena M., Bazzani L., Murino V., Cristani M. (2009) Towards a Subject-Centered Analysis for Automated Video Surveillance, Lecture Notes in Computer Science, vol. 5716, pp. 481 - 489, 15h International Conference on Image Analysis and Processing (ICIAP 2009), Springer, 978-3-540-38625-4'
